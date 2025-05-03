@@ -17,7 +17,7 @@ pub struct ItemArgumentConsumer;
 
 impl GetClientSideArgParser for ItemArgumentConsumer {
     fn get_client_side_parser(&self) -> ArgumentType {
-        ArgumentType::Resource { identifier: "item" }
+        ArgumentType::Resource { resource_location: "item" }
     }
 
     fn get_client_side_suggestion_type_override(&self) -> Option<SuggestionProviders> {

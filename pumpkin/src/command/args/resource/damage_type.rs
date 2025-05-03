@@ -18,7 +18,7 @@ pub struct DamageTypeArgumentConsumer;
 impl GetClientSideArgParser for DamageTypeArgumentConsumer {
     fn get_client_side_parser(&self) -> ArgumentType {
         ArgumentType::Resource {
-            identifier: "damage_type",
+            resource_location: "damage_type",
         }
     }
 

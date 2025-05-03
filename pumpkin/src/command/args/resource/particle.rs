@@ -18,7 +18,7 @@ pub struct ParticleArgumentConsumer;
 impl GetClientSideArgParser for ParticleArgumentConsumer {
     fn get_client_side_parser(&self) -> ArgumentType {
         ArgumentType::Resource {
-            identifier: "particle_type",
+            resource_location: "particle_type",
         }
     }
 

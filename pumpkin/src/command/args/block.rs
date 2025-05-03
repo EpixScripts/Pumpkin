@@ -17,7 +17,7 @@ pub struct BlockArgumentConsumer;
 impl GetClientSideArgParser for BlockArgumentConsumer {
     fn get_client_side_parser(&self) -> ArgumentType {
         ArgumentType::Resource {
-            identifier: "block",
+            resource_location: "block",
         }
     }
 

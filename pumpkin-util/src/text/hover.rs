@@ -11,7 +11,7 @@ pub enum HoverEvent {
     ShowText { value: Vec<TextComponentBase> },
     /// Shows an item.
     ShowItem {
-        /// Resource identifier of the item
+        /// Resource location of the item
         id: Cow<'static, str>,
         /// Number of the items in the stack
         #[serde(default, skip_serializing_if = "Option::is_none")]

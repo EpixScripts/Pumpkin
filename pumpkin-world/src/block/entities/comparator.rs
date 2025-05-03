@@ -14,7 +14,7 @@ impl ComparatorBlockEntity {
 const OUTPUT_SIGNAL: &str = "OutputSignal";
 
 impl BlockEntity for ComparatorBlockEntity {
-    fn identifier(&self) -> &'static str {
+    fn resource_location(&self) -> &'static str {
         Self::ID
     }
 

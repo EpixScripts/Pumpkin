@@ -17,10 +17,10 @@ pub trait BlockEntity: Send + Sync {
     fn from_nbt(nbt: &NbtCompound, position: BlockPos) -> Self
     where
         Self: Sized;
-    fn identifier(&self) -> &'static str;
+    fn resource_location(&self) -> &'static str;
     fn get_position(&self) -> BlockPos;
     fn write_internal(&self, nbt: &mut NbtCompound) {
-        nbt.put_string("id", self.identifier().to_string());
+        nbt.put_string("id", self.resource_location().to_string());
         let position = self.get_position();
         nbt.put_int("x", position.0.x);
         nbt.put_int("y", position.0.y);
@@ -31,7 +31,7 @@ pub trait BlockEntity: Send + Sync {
         pumpkin_data::block_properties::BLOCK_ENTITY_TYPES
             .iter()
             .position(|block_entity_name| {
-                *block_entity_name == self.identifier().split(":").last().unwrap()
+                *block_entity_name == self.resource_location().split(":").last().unwrap()
             })
             .unwrap() as u32
     }

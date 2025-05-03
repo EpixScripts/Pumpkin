@@ -64,7 +64,7 @@ use pumpkin_protocol::{
         CStopSound, CSubtitle, CSystemChatMessage, CTitleText, CUnloadChunk, CUpdateMobEffect,
         GameEvent, MetaDataType, PlayerAction,
     },
-    codec::identifier::Identifier,
+    codec::resource_location::ResourceLocation,
     ser::packet::Packet,
     server::play::{
         SChatCommand, SChatMessage, SChunkBatch, SClientCommand, SClientInformationPlay,
@@ -539,9 +539,9 @@ impl Player {
     ///
     /// # Arguments
     ///
-    /// * `sound_id`: An optional `Identifier` specifying the sound to stop. If `None`, all sounds in the specified category (if any) will be stopped.
-    /// * `category`: An optional `SoundCategory` specifying the sound category to stop. If `None`, all sounds with the specified identifier (if any) will be stopped.
-    pub async fn stop_sound(&self, sound_id: Option<Identifier>, category: Option<SoundCategory>) {
+    /// * `sound_id`: An optional `ResourceLocation` specifying the sound to stop. If `None`, all sounds in the specified category (if any) will be stopped.
+    /// * `category`: An optional `SoundCategory` specifying the sound category to stop. If `None`, all sounds with the specified resource location (if any) will be stopped.
+    pub async fn stop_sound(&self, sound_id: Option<ResourceLocation>, category: Option<SoundCategory>) {
         self.client
             .enqueue_packet(&CStopSound::new(sound_id, category))
             .await;

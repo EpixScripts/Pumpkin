@@ -142,7 +142,7 @@ impl Text {
 }
 
 impl BlockEntity for SignBlockEntity {
-    fn identifier(&self) -> &'static str {
+    fn resource_location(&self) -> &'static str {
         Self::ID
     }
 

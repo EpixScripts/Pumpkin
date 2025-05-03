@@ -44,7 +44,7 @@ use pumpkin_nbt::to_bytes_unnamed;
 use pumpkin_protocol::client::play::{
     CRemoveMobEffect, CSetEntityMetadata, MetaDataType, Metadata,
 };
-use pumpkin_protocol::codec::identifier::Identifier;
+use pumpkin_protocol::codec::resource_location::ResourceLocation;
 use pumpkin_protocol::ser::serializer::Serializer;
 use pumpkin_protocol::{
     ClientPacket, IdOr, SoundEvent,
@@ -490,7 +490,7 @@ impl World {
         player: Arc<Player>,
         server: &Server,
     ) {
-        let dimensions: Vec<Identifier> =
+        let dimensions: Vec<ResourceLocation> =
             server.dimensions.iter().map(DimensionType::name).collect();
 
         // This code follows the vanilla packet order

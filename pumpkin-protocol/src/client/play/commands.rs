@@ -129,7 +129,7 @@ impl ProtoNode<'_> {
                 } => {
                     // suggestion type
                     let suggestion_type = &override_suggestion_type.expect("ProtoNode::FLAG_HAS_SUGGESTION_TYPE should only be set if override_suggestion_type is not `None`.");
-                    write.write_string(suggestion_type.identifier())?;
+                    write.write_string(suggestion_type.resource_location())?;
                 }
                 _ => unimplemented!(
                     "`ProtoNode::FLAG_HAS_SUGGESTION_TYPE` is only implemented for `ProtoNodeType::Argument`"
@@ -189,7 +189,7 @@ pub enum ArgumentType<'a> {
     Time { min: i32 },
     ResourceOrTag { identifier: &'a str },
     ResourceOrTagKey { identifier: &'a str },
-    Resource { identifier: &'a str },
+    Resource { resource_location: &'a str },
     ResourceKey { identifier: &'a str },
     TemplateMirror,
     TemplateRotation,
@@ -229,7 +229,7 @@ impl ArgumentType<'_> {
             Self::Time { min } => write.write_i32_be(*min),
             Self::ResourceOrTag { identifier } => Self::write_with_identifier(identifier, write),
             Self::ResourceOrTagKey { identifier } => Self::write_with_identifier(identifier, write),
-            Self::Resource { identifier } => Self::write_with_identifier(identifier, write),
+            Self::Resource { resource_location: identifier } => Self::write_with_identifier(identifier, write),
             Self::ResourceKey { identifier } => Self::write_with_identifier(identifier, write),
             _ => Ok(()),
         }
@@ -316,7 +316,7 @@ pub enum SuggestionProviders {
 }
 
 impl SuggestionProviders {
-    fn identifier(&self) -> &'static str {
+    fn resource_location(&self) -> &'static str {
         match self {
             Self::AskServer => "minecraft:ask_server",
             Self::AllRecipes => "minecraft:all_recipes",
