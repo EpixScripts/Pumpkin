@@ -229,7 +229,9 @@ impl ArgumentType<'_> {
             Self::Time { min } => write.write_i32_be(*min),
             Self::ResourceOrTag { identifier } => Self::write_with_identifier(identifier, write),
             Self::ResourceOrTagKey { identifier } => Self::write_with_identifier(identifier, write),
-            Self::Resource { resource_location: identifier } => Self::write_with_identifier(identifier, write),
+            Self::Resource {
+                resource_location: identifier,
+            } => Self::write_with_identifier(identifier, write),
             Self::ResourceKey { identifier } => Self::write_with_identifier(identifier, write),
             _ => Ok(()),
         }
