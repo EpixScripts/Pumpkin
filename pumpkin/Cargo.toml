@@ -54,12 +54,7 @@ rsa = { version = "0.9", features = ["sha1"] }
 rsa-der = "0.3"
 
 # authentication
-reqwest = { version = "0.12", default-features = false, features = [
-    "http2",
-    "json",
-    "macos-system-configuration",
-    "rustls-tls",
-] }
+reqwest.workspace = true
 
 sha1 = "0.10"
 
