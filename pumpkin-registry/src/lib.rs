@@ -20,7 +20,8 @@ use pumpkin_util::resource_location::ResourceLocation;
 use serde::{Deserialize, Serialize};
 use trim_material::TrimMaterial;
 use trim_pattern::TrimPattern;
-use wolf::{WolfSoundVariant, WolfVariant};
+use wolf_sound_variant::WolfSoundVariant;
+use wolf_variant::WolfVariant;
 
 mod banner_pattern;
 mod biome;
@@ -38,7 +39,8 @@ mod painting_variant;
 mod pig_variant;
 mod trim_material;
 mod trim_pattern;
-mod wolf;
+mod wolf_sound_variant;
+mod wolf_variant;
 
 pub static SYNCED_REGISTRIES: LazyLock<SyncedRegistry> = LazyLock::new(|| {
     serde_json::from_str(include_str!("../../assets/synced_registries.json"))

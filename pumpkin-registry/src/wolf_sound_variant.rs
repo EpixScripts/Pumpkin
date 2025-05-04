@@ -1,17 +1,6 @@
 use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
-pub struct WolfVariant {
-    assets: WolfAssetInfo,
-}
-
-#[derive(Debug, Clone, Serialize, Deserialize)]
-pub struct WolfAssetInfo {
-    wild: String,
-    tame: String,
-    angry: String,
-}
-#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct WolfSoundVariant {
     hurt_sound: String,
     pant_sound: String,
