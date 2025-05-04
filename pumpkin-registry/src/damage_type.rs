@@ -1,12 +1,45 @@
 use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(rename_all = "snake_case")]
+pub enum DamageScaling {
+    Never,
+    WhenCausedByLivingNonPlayer,
+    Always,
+}
+
+// TODO: associated SoundEvents
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(rename_all = "snake_case")]
+pub enum DamageEffects {
+    Hurt,
+    Thorns,
+    Drowning,
+    Burning,
+    Poking,
+    Freezing
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize, Default)]
+#[serde(rename_all = "snake_case")]
+pub enum DeathMessageType {
+    #[default]
+    Default,
+    FallVariants,
+    IntentionalGameDesign,
+}
+
+fn default_damage_type_effects() -> DamageEffects {
+    DamageEffects::Hurt
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct DamageType {
-    exhaustion: f32,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    death_message_type: Option<String>,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    effects: Option<String>,
     message_id: String,
-    scaling: String,
+    scaling: DamageScaling,
+    exhaustion: f32,
+    #[serde(default = "default_damage_type_effects")]
+    effects: DamageEffects,
+    #[serde(default)]
+    death_message_type: DeathMessageType,
 }
