@@ -13,7 +13,7 @@ use frog_variant::FrogVariant;
 use indexmap::IndexMap;
 use instrument::Instrument;
 use jukebox_song::JukeboxSong;
-use paint::Painting;
+use painting_variant::PaintingVariant;
 use pig_variant::PigVariant;
 use pumpkin_protocol::client::config::RegistryEntry;
 use pumpkin_util::resource_location::ResourceLocation;
@@ -34,7 +34,7 @@ mod enchantment;
 mod frog_variant;
 mod instrument;
 mod jukebox_song;
-mod paint;
+mod painting_variant;
 mod pig_variant;
 mod trim_material;
 mod trim_pattern;
@@ -58,7 +58,7 @@ pub struct SyncedRegistry {
     trim_pattern: IndexMap<String, TrimPattern>,
     trim_material: IndexMap<String, TrimMaterial>,
     wolf_variant: IndexMap<String, WolfVariant>,
-    painting_variant: IndexMap<String, Painting>,
+    painting_variant: IndexMap<String, PaintingVariant>,
     dimension_type: IndexMap<String, Dimension>,
     damage_type: IndexMap<String, DamageType>,
     cat_variant: IndexMap<String, CatVariant>,
