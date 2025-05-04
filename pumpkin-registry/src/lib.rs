@@ -7,7 +7,7 @@ use chat_type::{ChatType, ChatTypeDecoration};
 use chicken_variant::ChickenVariant;
 use cow_variant::CowVariant;
 use damage_type::DamageType;
-use dimension_type::Dimension;
+use dimension_type::DimensionType;
 use enchantment::Enchantment;
 use frog_variant::FrogVariant;
 use indexmap::IndexMap;
@@ -59,7 +59,7 @@ pub struct SyncedRegistry {
     trim_material: IndexMap<String, TrimMaterial>,
     wolf_variant: IndexMap<String, WolfVariant>,
     painting_variant: IndexMap<String, PaintingVariant>,
-    dimension_type: IndexMap<String, Dimension>,
+    dimension_type: IndexMap<String, DimensionType>,
     damage_type: IndexMap<String, DamageType>,
     cat_variant: IndexMap<String, CatVariant>,
     chicken_variant: IndexMap<String, ChickenVariant>,
@@ -75,7 +75,7 @@ pub struct SyncedRegistry {
 
 // TODO: remove in favor of numerical registry ids for `minecraft:dimension_type`
 #[derive(Debug, Clone, Copy)]
-pub enum DimensionType {
+pub enum VanillaDimensionType {
     Overworld,
     OverworldCaves,
     TheEnd,
@@ -88,7 +88,7 @@ struct DataPool<T> {
     weight: i32,
 }
 
-impl DimensionType {
+impl VanillaDimensionType {
     pub fn name(&self) -> ResourceLocation {
         match self {
             Self::Overworld => ResourceLocation::vanilla("overworld"),

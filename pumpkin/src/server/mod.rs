@@ -21,7 +21,7 @@ use pumpkin_inventory::{Container, OpenContainer};
 use pumpkin_macros::send_cancellable;
 use pumpkin_protocol::client::login::CEncryptionRequest;
 use pumpkin_protocol::{ClientPacket, client::config::CPluginMessage};
-use pumpkin_registry::{DimensionType, Registry};
+use pumpkin_registry::{VanillaDimensionType, Registry};
 use pumpkin_util::math::position::BlockPos;
 use pumpkin_util::math::vector2::Vector2;
 use pumpkin_util::text::TextComponent;
@@ -63,7 +63,7 @@ pub struct Server {
     /// Manages multiple worlds within the server.
     pub worlds: RwLock<Vec<Arc<World>>>,
     // All the dimensions that exist on the server.
-    pub dimensions: Vec<DimensionType>,
+    pub dimensions: Vec<VanillaDimensionType>,
     /// Caches game registries for efficient access.
     pub cached_registry: Vec<Registry>,
     /// Tracks open containers used for item interactions.
@@ -112,7 +112,7 @@ impl Server {
 
         let world = World::load(
             Dimension::Overworld.into_level(world_path.clone()),
-            DimensionType::Overworld,
+            VanillaDimensionType::Overworld,
             block_registry.clone(),
         );
 
@@ -125,10 +125,10 @@ impl Server {
             container_id: 0.into(),
             worlds: RwLock::new(vec![Arc::new(world)]),
             dimensions: vec![
-                DimensionType::Overworld,
-                DimensionType::OverworldCaves,
-                DimensionType::TheNether,
-                DimensionType::TheEnd,
+                VanillaDimensionType::Overworld,
+                VanillaDimensionType::OverworldCaves,
+                VanillaDimensionType::TheNether,
+                VanillaDimensionType::TheEnd,
             ],
             command_dispatcher,
             block_registry,

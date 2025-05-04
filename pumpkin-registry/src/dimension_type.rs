@@ -10,7 +10,7 @@ pub struct MonsterSettings {
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
-pub struct Dimension {
+pub struct DimensionType {
     #[serde(skip_serializing_if = "Option::is_none")]
     fixed_time: Option<i64>,
     has_skylight: bool,

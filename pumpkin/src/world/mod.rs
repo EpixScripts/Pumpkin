@@ -62,7 +62,7 @@ use pumpkin_protocol::{
     },
     codec::var_int::VarInt,
 };
-use pumpkin_registry::DimensionType;
+use pumpkin_registry::VanillaDimensionType;
 use pumpkin_util::math::{position::BlockPos, vector3::Vector3};
 use pumpkin_util::math::{position::chunk_section_from_pos, vector2::Vector2};
 use pumpkin_util::text::{TextComponent, color::NamedColor};
@@ -159,7 +159,7 @@ pub struct World {
     /// The world's time, including counting ticks for weather, time cycles, and statistics.
     pub level_time: Mutex<LevelTime>,
     /// The type of dimension the world is in.
-    pub dimension_type: DimensionType,
+    pub dimension_type: VanillaDimensionType,
     pub sea_level: i32,
     /// The world's weather, including rain and thunder levels.
     pub weather: Mutex<Weather>,
@@ -174,7 +174,7 @@ impl World {
     #[must_use]
     pub fn load(
         level: Level,
-        dimension_type: DimensionType,
+        dimension_type: VanillaDimensionType,
         block_registry: Arc<BlockRegistry>,
     ) -> Self {
         // TODO
@@ -491,7 +491,7 @@ impl World {
         server: &Server,
     ) {
         let dimensions: Vec<ResourceLocation> =
-            server.dimensions.iter().map(DimensionType::name).collect();
+            server.dimensions.iter().map(VanillaDimensionType::name).collect();
 
         // This code follows the vanilla packet order
         let entity_id = player.entity_id();
