@@ -7,10 +7,10 @@ use pumpkin_data::{
     tag::{RegistryKey, get_registry_key_tags},
 };
 use pumpkin_macros::packet;
+use pumpkin_util::resource_location::ResourceLocation;
 
 use crate::{
     ClientPacket,
-    codec::resource_location::ResourceLocation,
     ser::{NetworkWriteExt, WritingError},
 };
 

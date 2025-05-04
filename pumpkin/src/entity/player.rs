@@ -64,7 +64,6 @@ use pumpkin_protocol::{
         CStopSound, CSubtitle, CSystemChatMessage, CTitleText, CUnloadChunk, CUpdateMobEffect,
         GameEvent, MetaDataType, PlayerAction,
     },
-    codec::resource_location::ResourceLocation,
     ser::packet::Packet,
     server::play::{
         SChatCommand, SChatMessage, SChunkBatch, SClientCommand, SClientInformationPlay,
@@ -93,6 +92,7 @@ use pumpkin_util::{
     },
     permission::PermissionLvl,
     text::TextComponent,
+    resource_location::ResourceLocation,
 };
 use pumpkin_world::entity::entity_data_flags::{
     DATA_PLAYER_MAIN_HAND, DATA_PLAYER_MODE_CUSTOMISATION,

@@ -8,8 +8,8 @@ use crate::command::{
     tree::{CommandTree, builder::argument},
 };
 use async_trait::async_trait;
-use pumpkin_protocol::codec::resource_location::ResourceLocation;
 use pumpkin_util::text::TextComponent;
+use pumpkin_util::resource_location::ResourceLocation;
 
 const NAMES: [&str; 1] = ["stopsound"];
 const DESCRIPTION: &str = "Stops a currently playing sound.";

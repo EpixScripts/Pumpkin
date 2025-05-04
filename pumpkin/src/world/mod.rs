@@ -44,7 +44,7 @@ use pumpkin_nbt::to_bytes_unnamed;
 use pumpkin_protocol::client::play::{
     CRemoveMobEffect, CSetEntityMetadata, MetaDataType, Metadata,
 };
-use pumpkin_protocol::codec::resource_location::ResourceLocation;
+use pumpkin_util::resource_location::ResourceLocation;
 use pumpkin_protocol::ser::serializer::Serializer;
 use pumpkin_protocol::{
     ClientPacket, IdOr, SoundEvent,
