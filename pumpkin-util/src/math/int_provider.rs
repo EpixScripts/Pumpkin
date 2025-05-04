@@ -1,9 +1,9 @@
 use proc_macro2::{Span, TokenStream};
 use quote::{ToTokens, quote};
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 use syn::LitInt;
 
-#[derive(Deserialize, Clone, Debug)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(tag = "type")]
 pub enum NormalIntProvider {
     #[serde(rename = "minecraft:uniform")]
@@ -23,7 +23,7 @@ impl ToTokens for NormalIntProvider {
     }
 }
 
-#[derive(Deserialize, Clone, Debug)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum IntProvider {
     Object(NormalIntProvider),
@@ -74,7 +74,7 @@ impl IntProvider {
     }
 }
 
-#[derive(Deserialize, Clone, Debug)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct UniformIntProvider {
     pub min_inclusive: i32,
     pub max_inclusive: i32,

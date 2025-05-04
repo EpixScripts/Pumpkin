@@ -7,7 +7,7 @@ use chat_type::{ChatType, ChatTypeDecoration};
 use chicken_variant::ChickenVariant;
 use cow_variant::CowVariant;
 use damage_type::DamageType;
-use dimension::Dimension;
+use dimension_type::Dimension;
 use enchantment::Enchantment;
 use frog_variant::FrogVariant;
 use indexmap::IndexMap;
@@ -29,7 +29,7 @@ mod chat_type;
 mod chicken_variant;
 mod cow_variant;
 mod damage_type;
-mod dimension;
+mod dimension_type;
 mod enchantment;
 mod frog_variant;
 mod instrument;
@@ -73,6 +73,7 @@ pub struct SyncedRegistry {
     instrument: IndexMap<String, Instrument>,
 }
 
+// TODO: remove in favor of numerical registry ids for `minecraft:dimension_type`
 #[derive(Debug, Clone, Copy)]
 pub enum DimensionType {
     Overworld,
