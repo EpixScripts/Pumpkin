@@ -3,7 +3,7 @@ use std::sync::LazyLock;
 use banner_pattern::BannerPattern;
 use biome::Biome;
 use cat_variant::CatVariant;
-use chat_type::{ChatType, Decoration};
+use chat_type::{ChatType, ChatTypeDecoration};
 use chicken_variant::ChickenVariant;
 use cow_variant::CowVariant;
 use damage_type::DamageType;
@@ -120,12 +120,12 @@ impl Registry {
         registry_entries.push(RegistryEntry::from_nbt_custom(
             "raw",
             &ChatType {
-                chat: Decoration {
+                chat: ChatTypeDecoration {
                     translation_key: "%s".to_string(),
                     parameters: vec!["content".to_string()],
                     style: None,
                 },
-                narration: Decoration {
+                narration: ChatTypeDecoration {
                     translation_key: "%s says %s".to_string(),
                     parameters: vec!["sender".to_string(), "content".to_string()],
                     style: None,
